@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validatrix</title>
+    <link rel="stylesheet" href="app.component.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="dropdown">
+                <label class="select-label" for="database">Select your Database: </label>
+                <select class="select-container" id="database">
+                    <option value="option1">Pinecone</option>
+                    <option value="option2">Delta Table</option>
+                </select>
+    
+            </div>
+            <p>Select your Datatype: </p>
+            <div class="r-form">
+                <!-- Radio Buttons for Data Type Selection -->
+                <div class="r-radio-group">
+                    <label class="r-radio">
+                        <input type="radio" class="r-input-radio" name="fileType" [(ngModel)]="selectedFileType" value="structured" />
+                        <span class="r-radio-label">Structured</span>
+                    </label>
+                    <label class="r-radio">
+                        <input type="radio" class="r-input-radio" name="fileType" [(ngModel)]="selectedFileType" value="unstructured" />
+                        <span class="r-radio-label">Unstructured</span>
+                    </label>
+                </div>
+            
+                <!-- File Input for Structured Data -->
+                <div *ngIf="selectedFileType === 'structured'" class="r-file-input">
+                    <label class="r-file-label">Choose Structured Data File:</label>
+                    <input type="file" class="r-input-file" (change)="onFileSelect($event)" accept=".csv,.xlsx,.json,.xml" />
+                    <span class="r-file-selected">{{ structuredFileName }}</span>
+                </div>
+            
+                <!-- File Input for Unstructured Data -->
+                <div *ngIf="selectedFileType === 'unstructured'" class="r-file-input">
+                    <label class="r-file-label">Choose Unstructured Data File:</label>
+                    <input type="file" class="r-input-file" (change)="onFileSelect($event)" accept=".txt,.pdf,.docx,.doc" />
+                    <span class="r-file-selected">{{ unstructuredFileName }}</span>
+                </div>
+                <button class="upload-btn" (click)="uploadFile()" >Upload</button>
+                <!-- Error Message -->
+                <div *ngIf="errorMessage" class="r-error-message">
+                    {{ errorMessage }}
+                </div>
+            </div>
+            <p>View your Files:</p>
+            <div class="r-form1">
+                <button (click)="selectStructuredFiles()" class="select-btn">Structured</button>
+                <button (click)="selectUnstructuredFiles()" class="select-btn">Unstructured</button>
+            </div>
+  
+            <!-- Popup Modal -->
+<div model *ngIf="isPopupVisible" class="popup-overlay">
+    <div class="popup-content">
+        <!--{{ selectedFileType }}-->
+      <h2> Files</h2>
+  
+      <ul *ngIf="selectedFiles.length > 0">
+        <li *ngFor="let file of selectedFiles">{{ file }}</li>
+      </ul>
+  
+      <p *ngIf="selectedFiles.length === 0">No files available for {{ selectedFileType }}.</p>
+  
+      <button (click)="closePopup()">Close</button>
+    </div>
+  </div>
+  
+
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Navbar -->
+            <nav class="navbar">
+                <img class="validatrix" src="https://res.cloudinary.com/djysychfq/image/upload/v1726478154/Mark_Icon_izl1gw.jpg" alt="logo" />
+                <h1 class="title">Validatrix</h1>
+            </nav>
+
+            <!-- Chat Area -->
+            <div class="chat-container">
+                <div id="chat" class="chat" #chat>
+                    <div class="message" *ngFor="let message of messages" [ngClass]="{'user-message': message.isUser, 'bot-message': !message.isUser}">
+                        <p>{{ message.content }}</p>
+                        <div *ngIf="!message.isUser" class="response-feedback">
+                            <button class="feedback-btn" (click)="handleFeedback('like')">👍</button>
+                            <button class="feedback-btn" (click)="handleFeedback('dislike')">👎</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input and Buttons -->
+            <div class="input-container">
+                <input type="text" id="userInput" #userInput [(ngModel)]="userInputText" placeholder="Ask something..." />
+                <button class="enter-btn" id="sendBtn" >Enter</button>
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal" *ngIf="showFeedbackModal">
+        <div class="modal-content">
+            <h2>How can we improve?</h2>
+            <textarea [(ngModel)]="feedbackText" rows="4" placeholder="Your feedback..."></textarea>
+            <button id="submitFeedback" (click)="submitFeedback()">Submit</button>
+            <button id="closeModal" (click)="closeFeedbackModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.ts"></script>
+</body>
+</html>

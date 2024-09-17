@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    height: 100vh;
+}
+.select-container{
+    width:100%;
+    height:45px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    background-color:#424242;
+    color:#ffffff;
+    font-weight: bold;
+    text-align :center;
+}
+
+.select-label{
+    margin-top: 100px;
+}
+
+/* Popup overlay background */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    z-index: 1000; /* Ensure it's on top of other content */
+  }
+  
+  /* Popup content box */
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a 3D effect */
+  }
+  
+  .popup-content h2 {
+    margin-top: 0;
+    color:black;
+    text-align: center;
+  }
+  
+  .popup-content ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .popup-content li {
+    padding: 5px 0;
+    color:black;
+  }
+  
+  .popup-content button {
+    display: block;
+    margin: 20px auto 0; /* Center button */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .popup-content button:hover {
+    background-color: #0056b3;
+  }
+  
+
+/* General form styling */
+.r-form {
+    margin: 10px;
+    padding: 10px;
+    margin-left:-1px;
+    margin-bottom:40px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: scroll;
+}
+.r-form1 {
+    margin: 10px;
+    padding: 10px;
+    margin-left:-1px;
+    border: 1px solid #ccc;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  
+}
+
+
+/* Radio group container */
+.r-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Radio input styling */
+.r-radio {
+    margin-bottom: 10px;
+}
+
+/* Radio button */
+.r-input-radio {
+    margin-right: 10px;
+}
+
+/* Radio label */
+.r-radio-label {
+    font-weight: normal;
+}
+
+/* File input section */
+.r-file-input {
+    margin-top: 20px;
+}
+
+/* File input label */
+.r-file-label {
+    font-size:12px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* File input field */
+.r-input-file {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Selected file name display */
+.r-file-selected {
+    margin-top: 15px;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Error message */
+.r-error-message {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+}
+
+
+/* Container */
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    padding: 20px;
+    padding-top: 60px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+/* Main Content */
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    padding: 15px;
+    display: flex;
+    justify-content:center;
+    width:100%;
+}
+
+/* Chat Area */
+.chat-container {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #1e1e1e;
+    overflow-y: auto;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat Messages */
+.message {
+    max-width: 60%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #2e7d32;
+    color: #fff;
+    margin-left: auto;
+    text-align: right;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: #424242;
+    color: #fff;
+    margin-right: auto;
+    text-align: left;
+    align-self: flex-start;
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #333;
+    border-top: 1px solid #444;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    background-color: #444;
+    color: #fff;
+}
+
+input[type="file"] {
+    margin-left: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: hsl(120, 1%, 26%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.enter-btn{
+    background-color: #007bff;
+}
+.select-btn{
+    background-color:#2e7d32;
+    margin: 5px;
+}
+.upload-btn{
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.input-file{
+    height:0px;
+}
+.validatrix{
+    height:35px;
+    width:40px;
+    margin-right: 10px;
+}
+button:hover {
+    background-color: #555;
+}
+
+/* Feedback Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 15% auto;
+    width: 50%;
+    color: white;
+}
+
+.modal-content textarea {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
